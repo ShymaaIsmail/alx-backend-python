@@ -4,9 +4,10 @@
 
 import asyncio
 import random
+from typing import AsyncGenerator
 
 
-async def async_generator():
+async def async_generator() -> AsyncGenerator[float, None]:
     """async_generator"""
     for _ in range(10):
         random_float = random.uniform(0, 10)
