@@ -1,7 +1,7 @@
 import sqlite3
 
 class ExecuteQuery:
-    def __init__(self, query, params=None, db_name="example.db"):
+    def __init__(self, query, params=None, db_name="db.users"):
         self.query = query
         self.params = params if params else ()
         self.db_name = db_name
