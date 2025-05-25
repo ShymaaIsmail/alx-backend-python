@@ -2,10 +2,10 @@ import sqlite3
 import functools
 
 def with_db_connection(func):
-    """ your code goes here"""
+    """Decorator to manage database connection for functions."""
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        conn = sqlite3.connect('users.db')
+        conn = sqlite3.connect('db.users')
         try:
             print(f"Connecting to database at: {conn.execute('PRAGMA database_list').fetchall()}")
             result = func(conn, *args, **kwargs)
