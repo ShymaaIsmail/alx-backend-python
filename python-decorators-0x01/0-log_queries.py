@@ -4,7 +4,7 @@ from datetime import datetime
 
 #### decorator to lof SQL queries
 
-""" YOUR CODE GOES HERE"""
+""" This decorator logs SQL queries executed by the function."""
 def log_queries(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
