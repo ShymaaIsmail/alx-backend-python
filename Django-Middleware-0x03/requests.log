@@ -1,0 +1,6 @@
+INFO:chats.middleware:2025-06-20 19:20:02.970673 - User: Anonymous - Path: /
+WARNING:django.request:Not Found: /
+INFO:chats.middleware:2025-06-20 19:20:04.177771 - User: Anonymous - Path: /favicon.ico
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/home/alx-prodev/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
+INFO:django.utils.autoreload:/home/alx-prodev/alx-backend-python/Django-Middleware-0x03/chats/middleware.py changed, reloading.
