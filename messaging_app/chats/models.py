@@ -6,7 +6,7 @@ class User(AbstractUser):
     """
     Custom User model extending AbstractUser with UUID primary key and extra fields.
     """
-    user_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     # password, first_name, last_name are inherited from AbstractUser
