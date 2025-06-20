@@ -1,9 +1,12 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, status, filters
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import get_user_model
 from .models import Conversation, Message
 from .serializers import ConversationSerializer, MessageSerializer
+from .filters import MessageFilter
+from .pagination import CustomPagination
 
 User = get_user_model()
 
@@ -32,14 +35,15 @@ class ConversationViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(conversation)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-
 class MessageViewSet(viewsets.ModelViewSet):
     queryset = Message.objects.all().select_related('sender', 'conversation')
     serializer_class = MessageSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['sent_at']  # Allow ordering by time
-    ordering = ['-sent_at']        # Default to newest first
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_class = MessageFilter
+    pagination_class = CustomPagination
+    ordering_fields = ['sent_at']
+    ordering = ['-sent_at']
 
     def create(self, request, *args, **kwargs):
         conversation_id = request.data.get('conversation')
