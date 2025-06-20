@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 from .models import Conversation, Message
 from .serializers import ConversationSerializer, MessageSerializer
 from .filters import MessageFilter
-from .pagination import CustomPagination
+from .pagination import MessagePagination
 
 User = get_user_model()
 
@@ -41,7 +41,7 @@ class MessageViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
     filterset_class = MessageFilter
-    pagination_class = CustomPagination
+    pagination_class = MessagePagination
     ordering_fields = ['sent_at']
     ordering = ['-sent_at']
 
